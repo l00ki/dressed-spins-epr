@@ -1,0 +1,2 @@
+*.DSC filter=lfs diff=lfs merge=lfs -text
+*.DTA filter=lfs diff=lfs merge=lfs -text
