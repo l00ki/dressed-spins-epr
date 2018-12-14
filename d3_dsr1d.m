@@ -3,6 +3,11 @@
 
 %% DSR 1D
 Y = real(spec);
-Y = abs(Y).^2 / length(Y);
+Y = max(Y) - Y;
+Y = Y / max(Y);
 
 plot(f, Y)
+xlabel('\nu_{rf} / MHz')
+ylabel('signal / a.u.')
+
+print('~/git/uni-writing/res/dressed-spins-epr/d3_dsr1d', '-dpng')

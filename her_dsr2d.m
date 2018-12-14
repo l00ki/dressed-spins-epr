@@ -10,4 +10,6 @@ spec = bsxfun(@minus, spec, bg2);
 
 spec = real(spec);
 
-surface(x{1}, x{2}, spec)
+contour(x{1}, x{2}, spec, 5)
+
+print('~/git/uni-writing/res/dressed-spins-epr/her_dsr2d', '-dpng')

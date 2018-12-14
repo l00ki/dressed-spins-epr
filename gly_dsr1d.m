@@ -6,3 +6,5 @@ Y = real(spec);
 Y = abs(Y).^2 / length(Y);
 
 plot(f, Y)
+
+print('~/git/uni-writing/res/dressed-spins-epr/gly_dsr1d', '-dpng')

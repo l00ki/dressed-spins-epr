@@ -20,5 +20,8 @@ Y = abs(Y).^2 / length(spec);
 Y = Y / max(Y);
 
 plot(f, Y)
-xlabel('\nu_1/ MHz')
+xlabel('\nu_{nut}/ MHz')
+ylabel('signal / a.u.')
 xlim([0 max(f)])
+
+print('~/git/uni-writing/res/dressed-spins-epr/d3_nut', '-dpng')

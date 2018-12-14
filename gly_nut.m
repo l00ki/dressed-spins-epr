@@ -22,3 +22,5 @@ Y = Y / max(Y);
 plot(f, Y)
 xlabel('\nu_1/ MHz')
 xlim([0 max(f)])
+
+print('~/git/uni-writing/res/dressed-spins-epr/gly_nut', '-dpng')

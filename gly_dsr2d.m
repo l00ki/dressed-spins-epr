@@ -11,3 +11,5 @@ spec = bsxfun(@minus, spec, bg2);
 spec = real(spec);
 
 surface(x{1}, x{2}, spec, 'EdgeColor', 'none')
+
+print('~/git/uni-writing/res/dressed-spins-epr/gly_dsr2d', '-dpng')

@@ -8,7 +8,7 @@ nuS = 5.000;
 dt   = 0.001;
 ntp  = 25;
 ntau = 150;
-nT   = 1000;
+nT   = 7000;
 nt   = 2 * ntau;
 ntot = 1 + ntp + ntau + nT + nt;
 
@@ -95,4 +95,4 @@ grid on
 xlim([-1 1])
 xlabel('x')
 
-print('~/git/uni-writing/res/dressed-spins-epr/sim_bloch', '-dpng')
+print('~/git/uni-writing/res/dressed-spins-epr/sim_bloch_dsr2d', '-dpng')
