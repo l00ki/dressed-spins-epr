@@ -14,15 +14,15 @@ Ia=cos(eta)^2;
 % pulsing
 nu1 = 6.8;  % channel 1 power [MHz]
 nu2 =  0.2000; % channel 2 power [MHz]
-nuRF0 = 0.000; % sweep from this rf frequency [MHz]
+nuRF0 = 2.000; % sweep from this rf frequency [MHz]
 nuRF = 10.000; % sweep to this rf frequency [MHz]
 tp  = 0.25/nu1; % prep pulse length [us]
 tau =  0.6;  % interpulse evolution time [us]
-T   =  22 * tp; % HTA pulse + rf irradiation length [us]
+T   =  102 * tp; % HTA pulse + rf irradiation length [us]
 
 % sampling
-nRF = 51; % rf frequencies probed
-nOffset = 50; % spin packages
+nRF = 41; % rf frequencies probed
+nOffset = 21; % spin packages
 
 %% setup
 Sx = sop(sys, 'xe');
@@ -36,8 +36,8 @@ M  = Sy;
 nuOffset = 1.2 * fwhm * linspace(-1.0, 1.0, nOffset)+2;
 weights  = gaussian(nuOffset, 0, fwhm);
 nuRF = linspace(nuRF0, nuRF, nRF);
-signal = zeros(1, nRF);
-dT=1e-3;
+%signal = zeros(nRF);
+dT=2e-3;
 nT = round(T / dT);
 
 % tic
@@ -74,17 +74,17 @@ nT = round(T / dT);
 % end
 % toc
 
-%% plot
-figure(2)
-signal = real(signal / max(signal));
-plot(nuRF, signal, 'b')
-title('Dressed spin EPR spectrum')
-xlabel('\nu_{rf} / MHz')
-ylabel('normalized signal')
-hold on
+% %% plot
+% figure(2)
+% signal = real(signal / max(signal));
+% plot(nuRF, signal, 'b')
+% title('Dressed spin EPR spectrum')
+% xlabel('\nu_{rf} / MHz')
+% ylabel('normalized signal')
+% hold on
 
 signal = zeros(nRF);
-
+%%
 tic
 parfor iRFa = 1 : nRF
     for iRFb = 1 : nRF
@@ -129,8 +129,8 @@ end
 toc
 
 %% plot
-signal = real(signal / max(signal));
+signal = real(signal ./ max(signal));
 signalsmooth = datasmooth(signal, 10);
-plot(nuRF, signalsmooth, 'r')
+surf(nuRF, nuRF, signal)
 
 print('~/git/uni-writing/res/dressed-spins-epr/sim_dsr2d', '-dpng')
